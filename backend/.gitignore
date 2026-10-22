@@ -3,3 +3,6 @@ tutorial-env/
 __pycache__/
 *.py[cod]
 database.db
+.env
+practice_db.py
+practice_security.py
