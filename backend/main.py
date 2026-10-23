@@ -1,5 +1,10 @@
 from fastapi import FastAPI
 from pydantic import BaseModel, EmailStr, Field
+from sqlmodel import Session
+
+from db import engine
+from accounts.models import User
+from accounts.security import hash_password
 
 
 class RegisterRequest(BaseModel):
@@ -23,6 +28,13 @@ def health():
 
 @app.post("/api/register", response_model=RegisterResponse)
 def register(user: RegisterRequest):
-    return {"name": user.name,
-            "email": user.email,
-            "id": 1}
+    db_user = User(name = user.name,
+                   email = user.email,
+                   password_hash = hash_password(user.password))
+    with Session(engine) as session:
+        session.add(db_user)
+        session.commit()
+        session.refresh(db_user)
+        return {"name": db_user.name,
+                "email": db_user.email,
+                "id": db_user.id}
