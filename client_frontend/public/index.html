@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fnPlanner - Plan your next hangout</title>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- 
+    ========================================================================
+    NOTE FOR STYLING (styles.css):
+    [RED NOTE 1: "Everything on the screen has soft appear animation when website is just opened"]
+    - Define a CSS keyframe animation in style.css:
+      @keyframes softAppear {
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    - Apply `animation: softAppear 0.8s ease-out forwards;` to <body> or <main>.
+    ========================================================================
+  -->
+</head>
+<body class="page-load-fade">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="navbar">
+    <div class="nav-brand">
+      <img src="assets/logo-icon.png" alt="fnPlanner Logo" class="brand-avatar" />
+      <span class="brand-name">fnPlanner</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#about" class="nav-item">About</a>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-item">Github</a>
+      <a href="#contacts" class="nav-item">Contacts</a>
+      
+      <!-- Language selector dropdown trigger -->
+      <button class="nav-icon-btn language-selector" aria-label="Change language">
+        🌐 <span class="arrow-down">▾</span>
+      </button>
+
+      <!-- Close / Exit button -->
+      <button class="nav-icon-btn close-btn" aria-label="Close menu">✕</button>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN HERO / LANDING SECTION ================= -->
+  <main class="hero-container">
+    
+    <!-- LEFT COLUMN: Brand pitch & CTA -->
+    <section class="hero-left">
+      <div class="hero-text-block">
+        <h1 class="hero-title">
+          fnPlanner
+          <span class="title-icons" aria-hidden="true">🗓️📍</span>
+        </h1>
+        <p class="hero-tagline">
+          Plan the when and where for your next hangout!
+        </p>
+
+        <!-- 
+          ======================================================================
+          [RED NOTE 3: "Button lights up when hovered over"]
+          - Implement in styles.css under `.cta-btn:hover`:
+            background-color / box-shadow glow (e.g., box-shadow: 0 0 15px rgba(255,255,255,0.4))
+          ======================================================================
+        -->
+        <button type="button" class="cta-btn">
+          Create or join a plan &rarr;
+        </button>
+      </div>
+
+      <!-- Decorative squiggle doodle (bottom-left) -->
+      <div class="doodle doodle-bottom-left" aria-hidden="true">
+        <!-- Optional inline SVG or background-image via CSS -->
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: Stacked interactive preview cards -->
+    <section class="hero-right">
+      
+      <!-- Decorative squiggle doodle (top-right) -->
+      <div class="doodle doodle-top-right" aria-hidden="true"></div>
+
+      <!-- 
+        ========================================================================
+        [RED NOTE 2: "The two boxes swap places with each other when hovered over"]
+        Option A (Pure CSS):
+          Target `.cards-wrapper:hover .card-front` and `.cards-wrapper:hover .card-back`
+          using CSS transforms (translate, z-index change, and transition: all 0.4s ease).
+        Option B (JavaScript):
+          Use `scripts/cards.js` to toggle a `.swapped` class on mouseenter/mouseleave.
+        ========================================================================
+      -->
+      <div class="cards-wrapper" id="cardStack">
+
+        <!-- CARD 1: Background / Secondary Card -->
+        <article class="preview-card card-back" id="cardTwo">
+          <header class="card-header">
+            <h2 class="card-title">When</h2>
+            <!-- Secondary state placeholder (e.g. Map mode or alternative calendar view) -->
+          </header>
+
+          <!-- 
+            ====================================================================
+            [RED NOTE 4: "In the future these might be videos instead so just leave slots"]
+            ====================================================================
+          -->
+          <div class="card-media-slot">
+            <!-- CURRENT MOCKUP: Static image or HTML graphic -->
+            <img src="assets/preview-mockup-alt.png" alt="Secondary feature preview" class="mockup-img" />
+
+            <!-- 
+              FUTURE VIDEO REPLACEMENT SLOT:
+              Uncomment the video tag below and comment out the image above:
+              <video class="mockup-video" autoplay loop muted playsinline>
+                <source src="assets/videos/when-feature.mp4" type="video/mp4" />
+              </video>
+            -->
+          </div>
+        </article>
+
+        <!-- CARD 2: Foreground / Primary Active Card -->
+        <article class="preview-card card-front" id="cardOne">
+          <header class="card-header">
+            <h2 class="card-title">When</h2>
+            <p class="card-subtitle">Find a date that works for everybody</p>
+          </header>
+
+          <!-- MEDIA / CALENDAR HEATMAP SLOT -->
+          <div class="card-media-slot">
+            <!-- CURRENT MOCKUP: Month Availability Grid -->
+            <div class="calendar-preview-table">
+              <!-- Mode 1 calendar heat-map grid goes here -->
+            </div>
+
+            <!-- 
+              FUTURE VIDEO REPLACEMENT SLOT:
+              <video class="mockup-video" autoplay loop muted playsinline>
+                <source src="assets/videos/heatmap-preview.mp4" type="video/mp4" />
+              </video>
+            -->
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Optional script file for hover listeners or dynamic animations -->
+  <script src="main.js"></script>
+</body>
+</html>
