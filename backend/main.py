@@ -1,6 +1,6 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, EmailStr, Field
-from sqlmodel import Session
+from sqlmodel import Session, select
 
 from db import engine
 from accounts.models import User
@@ -26,15 +26,19 @@ def health():
     return {"status": "ok"}
 
 
-@app.post("/api/register", response_model=RegisterResponse)
+@app.post("/api/register", response_model=RegisterResponse, status_code=201)
 def register(user: RegisterRequest):
-    db_user = User(name = user.name,
-                   email = user.email,
-                   password_hash = hash_password(user.password))
     with Session(engine) as session:
-        session.add(db_user)
-        session.commit()
-        session.refresh(db_user)
-        return {"name": db_user.name,
-                "email": db_user.email,
-                "id": db_user.id}
+        existing_user = session.exec(select(User).where(User.email == user.email)).first()
+        if existing_user is not None:
+            raise HTTPException(status_code=409, detail="Email already registered")
+        else:
+            db_user = User(name = user.name,
+                        email = user.email,
+                        password_hash = hash_password(user.password))
+            session.add(db_user)
+            session.commit()
+            session.refresh(db_user)
+            return {"name": db_user.name,
+                    "email": db_user.email,
+                    "id": db_user.id}
