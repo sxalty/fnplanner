@@ -1,0 +1,138 @@
+/* Color Tokens matching the fnPlanner Native Palette */
+:root {
+  --color-charcoal: #1f2937;
+  --color-white: #ffffff;
+  --color-border: #e5e7eb;
+  --color-accent: #059669;
+  --color-hover-bg: #f3f4f6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 100;
+}
+
+/* Brand Section */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-charcoal);
+}
+
+.brand-avatar {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.brand-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Nav Actions Section */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--color-charcoal);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.15s ease;
+}
+
+.nav-item:hover {
+  color: var(--color-accent);
+}
+
+/* Generic Icon Buttons (Language & Close) */
+.nav-icon-btn {
+  background: none;
+  border: 1px solid transparent;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: var(--color-charcoal);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-icon-btn:hover {
+  background-color: var(--color-hover-bg);
+}
+
+.close-btn {
+  font-size: 1.1rem;
+  padding: 6px 8px;
+}
+
+/* Language Selector & Dropdown Menu */
+.language-dropdown-wrapper {
+  position: relative;
+}
+
+.language-selector.active {
+  background-color: var(--color-hover-bg);
+  border-color: var(--color-border);
+}
+
+.lang-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.arrow-down {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.language-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 6px;
+  margin: 0;
+  min-width: 130px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.language-menu button {
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--color-charcoal);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.language-menu button:hover {
+  background-color: var(--color-hover-bg);
+  color: var(--color-accent);
+}

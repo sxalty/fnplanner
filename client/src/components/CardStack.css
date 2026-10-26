@@ -1,0 +1,39 @@
+/* Only rules relevant to the CardStack component */
+.card-stack {
+  position: relative;
+  width: 520px;
+  height: 380px;
+  cursor: pointer;
+}
+
+.preview-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 480px;
+  background-color: var(--color-bg);              /* Inherited from central hub file (index.css) */
+  border: 2px solid var(--color-charcoal);        /* Inherited from central hub */
+  border-radius: var(--radius-card);              
+  padding: 24px;
+  transition: transform 0.4s ease, z-index 0.4s ease;
+}
+
+.card-one {
+  transform: translate(35px, 35px);
+  z-index: 2;
+}
+
+.card-two {
+  transform: translate(0px, 0px);
+  z-index: 1;
+}
+
+.card-stack:hover .card-one {
+  transform: translate(0px, 0px);
+  z-index: 1;
+}
+
+.card-stack:hover .card-two {
+  transform: translate(35px, 35px);
+  z-index: 2;
+}

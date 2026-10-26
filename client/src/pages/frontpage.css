@@ -1,0 +1,121 @@
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  min-height: calc(100vh - 75px);
+  margin: 0 auto;
+  padding: 40px 32px;
+  gap: 48px;
+}
+
+.hero-left {
+  flex: 1;
+  max-width: 540px;
+}
+
+.hero-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-charcoal, #1f2937);
+}
+
+.title-icons {
+  display: inline-block;
+  font-size: 2.75rem;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--color-muted, #4b5563);
+}
+
+/* Radiant Emerald CTA Button */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 16px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--color-accent, #059669);
+  border: 2px solid var(--color-accent, #059669);
+  border-radius: var(--radius-btn, 6px);
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease;
+}
+
+.cta-btn:hover {
+  background-color: #047857;
+  border-color: #047857;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(5, 150, 105, 0.55), 0 8px 16px rgba(5, 150, 105, 0.25);
+}
+
+.cta-btn:active {
+  transform: translateY(0);
+}
+
+/* Right Section Preview Frame */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-placeholder-frame {
+  width: 500px;
+  height: 360px;
+  border: 2px dashed var(--color-border, #e5e7eb);
+  border-radius: var(--radius-card, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fafafa;
+}
+
+.placeholder-text {
+  color: var(--color-muted, #6b7280);
+  font-weight: 500;
+}
+
+/* Responsive Stacking */
+@media (max-width: 960px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+    gap: 40px;
+  }
+
+  .hero-text-block {
+    align-items: center;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .preview-placeholder-frame {
+    width: 100%;
+    max-width: 480px;
+    height: 300px;
+  }
+}
