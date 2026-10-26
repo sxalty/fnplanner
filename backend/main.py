@@ -88,10 +88,14 @@ def user_check(session_token: Annotated[str | None, Cookie()] = None):
                     "email": current_user.email,
                     "id": current_user.id}
 
-
-
-
-            
-
-
-
+@app.post("/api/logout")
+def logout(response: Response, session_token: Annotated[str | None, Cookie()] = None):
+    if session_token is not None:
+        hashed_session_token = hash_session_token(session_token)
+        with Session(engine) as session:
+            login_session = session.exec(select(LoginSession).where(LoginSession.token_hash == hashed_session_token)).first()
+            if login_session is not None:
+                session.delete(login_session)
+                session.commit()
+    response.delete_cookie(key="session_token", path="/")
+    return {"message": "Logged out"}
