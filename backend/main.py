@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Response, Cookie
+from fastapi import FastAPI, HTTPException, Response, Cookie, Depends
 from pydantic import BaseModel, EmailStr, Field
 from sqlmodel import Session, select
 from datetime import datetime, timedelta, UTC
@@ -69,8 +69,7 @@ def login(user: LoginRequest, response: Response):
             response.set_cookie(key="session_token", value=token, max_age=3600, path="/", secure=False, httponly=True,samesite="lax")
             return {"message": "Credentials verified"}
             
-@app.get("/api/me", response_model=RegisterResponse, responses={401: {"description": "Not authenticated"}})
-def user_check(session_token: Annotated[str | None, Cookie()] = None):
+def get_current_user(session_token: Annotated[str | None, Cookie()] = None):
     if session_token is None:
         raise HTTPException(status_code=401, detail="Not authenticated")
     else:
@@ -84,9 +83,14 @@ def user_check(session_token: Annotated[str | None, Cookie()] = None):
             current_user = session.exec(select(User).where(User.id == login_session.user_id)).first()
             if current_user is None:
                 raise HTTPException(status_code=401, detail="Not authenticated")
-            return {"name": current_user.name,
-                    "email": current_user.email,
-                    "id": current_user.id}
+            return current_user
+   
+
+@app.get("/api/me", response_model=RegisterResponse, responses={401: {"description": "Not authenticated"}})
+def user_check(current_user: Annotated[User, Depends(get_current_user)]):
+    return {"name": current_user.name,
+            "email": current_user.email,
+            "id": current_user.id}
 
 @app.post("/api/logout")
 def logout(response: Response, session_token: Annotated[str | None, Cookie()] = None):
