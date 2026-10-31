@@ -1,31 +1,63 @@
-/* 1. Global Box Sizing Reset */
+:root {
+  /* Surface & Backgrounds */
+  --color-bg: #f8fafc;                  /* Light cool-grey/white page background */
+  --color-surface: #ffffff;             /* Crisp white for cards and calendar */
+  --color-nav-bg: #0d1527;              /* Dark navy header bar */
+  --color-nav-border: #1e293b;          /* Subtle border below the header */
+
+  /* Primary Typography & Borders */
+  --color-text-main: #0f172a;           /* Deep slate/black for headers and titles */
+  --color-text-muted: #475569;          /* Slate grey for subtext and descriptions[cite: 9] */
+  --color-border-card: #000000;         /* Solid black card outlines and table borders[cite: 9] */
+  --color-border-light: #e2e8f0;        /* Subtle divider borders */
+
+  /* Nav & Inverted Elements */
+  --color-nav-text: #ffffff;            /* White text and icons in the top bar[cite: 9] */
+  --color-nav-hover: #94a3b8;           /* Muted slate for link hover in navbar */
+
+  /* CTA Button & Interactive Elements */
+  --color-btn-bg: #1e293b;              /* Dark charcoal/navy button fill[cite: 9] */
+  --color-btn-hover: #0f172a;           /* Deep black-slate on hover */
+  --color-btn-text: #ffffff;            /* White text for CTA button[cite: 9] */
+  --color-btn-shadow: rgba(0, 0, 0, 0.2); /* Soft drop shadow[cite: 9] */
+  --color-btn-glow: rgba(59, 130, 246, 0.5); /* Blue-tinted light-up hover glow */
+
+  /* Calendar Heatmap Palette (Mode 1 Blue Scale)[cite: 9] */
+  --color-heat-empty: #ffffff;          /* White for unselected dates[cite: 9] */
+  --color-heat-light: #c8ddf2;          /* Light ice-blue (1-2 free)[cite: 9] */
+  --color-heat-med: #7ca8d4;            /* Medium steel-blue (most free)[cite: 9] */
+  --color-heat-dark: #3a6598;           /* Deep slate-blue (all free)[cite: 9] */
+  --color-heat-text-dark: #ffffff;      /* White text for high-contrast dark cells */
+
+  /* Hand-drawn Accents & Doodles[cite: 9] */
+  --color-highlight-loop: #facc15;      /* Golden-yellow date selection doodle[cite: 9] */
+  --color-doodle-stroke: #0d1b2a;       /* Dark navy for corner squiggle lines[cite: 9] */
+
+  /* Typography Stack */
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radius-card: 16px;
+  --radius-btn: 10px;
+}
+
+/* ==========================================================================
+   2. GLOBAL RESETS & DEFAULTS
+   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* 2. Central Design Tokens (The fnPlanner Palette) */
-:root {
-  --color-bg: #ffffff;
-  --color-charcoal: #1f2937;
-  --color-accent: #059669;
-  --color-border: #e5e7eb;
-  --color-muted: #6b7280;
-  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --radius-card: 16px;
-  --radius-btn: 6px;
-}
-
-/* 3. Base Body Defaults */
 body {
   font-family: var(--font-main);
   background-color: var(--color-bg);
-  color: var(--color-charcoal);
+  color: var(--color-text-main);
   min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* 4. Global Shared Animation */
+/* Soft Page-Load Entrance Animation[cite: 6, 9] */
 @keyframes softAppear {
   from {
     opacity: 0;

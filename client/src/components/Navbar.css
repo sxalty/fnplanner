@@ -3,8 +3,8 @@
   --color-charcoal: #1f2937;
   --color-white: #ffffff;
   --color-border: #e5e7eb;
-  --color-accent: #059669;
-  --color-hover-bg: #f3f4f6;
+  --color-accent: #7587b2;
+  --color-hover-bg: #264da7;
 }
 
 .navbar {
@@ -12,7 +12,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-  background-color: var(--color-white);
+  background-color: var(--color-charcoal);
   border-bottom: 1px solid var(--color-border);
   position: relative;
   z-index: 100;
@@ -24,7 +24,7 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: var(--color-charcoal);
+  color: var(--color-white);
 }
 
 .brand-avatar {
@@ -48,7 +48,7 @@
 
 .nav-item {
   text-decoration: none;
-  color: var(--color-charcoal);
+  color: var(--color-white);
   font-weight: 500;
   font-size: 0.95rem;
   transition: color 0.15s ease;
@@ -95,18 +95,19 @@
 .lang-label {
   font-weight: 600;
   font-size: 0.85rem;
+  color: white;
 }
 
 .arrow-down {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: white;
 }
 
-.language-menu {
+.language-menu {  /*drop down menu*/
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  background-color: var(--color-white);
+  background-color: var(--color-charcoal);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -127,7 +128,7 @@
   border: none;
   border-radius: 4px;
   font-size: 0.9rem;
-  color: var(--color-charcoal);
+  color: var(--color-white);
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease;
 }

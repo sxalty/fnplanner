@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/navbar";
+import CardStack from "../components/CardStack";
 import "./frontpage.css";
 
 export default function Frontpage() {
@@ -9,16 +10,16 @@ export default function Frontpage() {
 
   return (
     <div className="page-load-fade">
-      {/* 1. Integrated Navigation Bar */}
+      {/* 1. Persistent Top Navigation Bar */}
       <Navbar onCloseMenu={handleClose} />
 
-      {/* 2. Main Hero Grid */}
+      {/* 2. Hero Section */}
       <main className="hero-container">
-        {/* Left Column: Brand Headline & Primary CTA */}
+        {/* Left Column: Brand Pitch & CTA */}
         <section className="hero-left">
           <div className="hero-text-block">
             <h1 className="hero-title">
-              fnPlanner <span className="title-icons" aria-hidden="true"></span>
+              fnPlanner <span className="title-icons" aria-hidden="true">🗓️📍</span>
             </h1>
             <p className="hero-tagline">
               Plan the when and where for your next hangout!
@@ -29,11 +30,9 @@ export default function Frontpage() {
           </div>
         </section>
 
-        {/* Right Column: Preview Area (Ready for CardStack component) */}
+        {/* Right Column: Interactive Card Stack Preview */}
         <section className="hero-right">
-          <div className="preview-placeholder-frame">
-            <p className="placeholder-text">Feature Preview Area</p>
-          </div>
+          <CardStack />
         </section>
       </main>
     </div>
