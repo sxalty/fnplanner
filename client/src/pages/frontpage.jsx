@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import CardStack from "../components/CardStack";
 import "./frontpage.css";
 
