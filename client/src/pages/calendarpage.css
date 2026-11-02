@@ -1,0 +1,93 @@
+/* client/src/components/calendar/CalendarGrid.css */
+
+.calendar-board-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 720px;
+}
+
+/* Header bar with proper spacing between month and best dates */
+.calendar-summary-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.15rem;
+  color: #0f172a;
+}
+
+.month-heading-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.summary-month-label strong,
+.summary-best-days strong {
+  font-weight: 700;
+}
+
+/* Board layout: left arrow + grid */
+.calendar-board-layout {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.month-nav-arrow {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #0f172a;
+  cursor: pointer;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.month-nav-arrow:hover {
+  transform: scale(1.15);
+}
+
+.month-nav-arrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Outer calendar border matching the wireframe */
+.calendar-grid-wrapper {
+  flex: 1;
+  border: 2px solid #000000;
+  background-color: #ffffff;
+}
+
+/* 7-column header row */
+.calendar-week-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 2px solid #000000;
+  background-color: #ffffff;
+}
+
+.header-cell {
+  text-align: center;
+  padding: 8px 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-right: 1.5px solid #000000;
+}
+
+.header-cell:last-child {
+  border-right: none;
+}
+
+/* 7-column day slots */
+.calendar-cells-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}

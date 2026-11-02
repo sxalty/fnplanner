@@ -1,0 +1,83 @@
+/* client/src/components/calendar/MemberList.css */
+
+.member-list-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 170px;
+  max-width: 220px;
+  padding: 8px 12px;
+  user-select: none;
+}
+
+/* Heading: "Members(6/6)"[cite: 1] */
+.member-list-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+/* Reset default list styling while preserving manual order numbers */
+.member-ordered-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Individual member row[cite: 1] */
+.member-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #111827;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.member-item:hover {
+  background-color: #f1f5f9;
+}
+
+/* Highlighted state when a user clicks a member to see their solo dates */
+.member-item.is-active {
+  background-color: #e2e8f0;
+  font-weight: 700;
+}
+
+.member-index {
+  font-weight: 600;
+  color: #000000;
+  min-width: 18px;
+}
+
+.member-name {
+  flex: 1;
+  word-break: break-word;
+  line-height: 1.25;
+}
+
+/* Status indicator badge */
+.member-status-indicator {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-left: auto;
+  padding-left: 4px;
+}
+
+.member-status-indicator.status-ready {
+  color: #059669; /* Green checkmark */
+}
+
+.member-status-indicator.status-pending {
+  color: #94a3b8; /* Subtle gray dot */
+  font-size: 1.2rem;
+  line-height: 0.5;
+}

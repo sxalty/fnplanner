@@ -1,0 +1,38 @@
+/* Layout enhancements for month navigation */
+.month-heading-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.month-switcher-tabs {
+  display: inline-flex;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.month-tab-btn {
+  background: none;
+  border: none;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.month-tab-btn.active {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.month-nav-arrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  transform: none !important;
+}
