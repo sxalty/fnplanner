@@ -6,7 +6,7 @@ import CalendarGrid from "../components/calendar/CalendarGrid";
 import MemberList from "../components/calendar/MemberList";
 import "./CalendarPage.css";
 
-const INITIAL_MEMBERS = [
+const INITIAL_MEMBERS = [ //sth in services will link members name here
   { id: "m1", name: "Lam", availableDates: ["2026-12-08", "2026-12-09"] },
   { id: "m2", name: "Lana Rhoades", availableDates: ["2026-12-01", "2026-12-02", "2026-12-08", "2026-12-09"] },
   { id: "m3", name: "Sydney Sweeney", availableDates: ["2026-12-08", "2026-12-09"] },
@@ -22,7 +22,6 @@ export default function CalendarPage() {
 
   return (
     <div className="calendar-page-root">
-      <Navbar />
 
       <main className="calendar-page-content">
         <CalendarHeader

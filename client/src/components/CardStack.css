@@ -1,4 +1,4 @@
-/* Only rules relevant to the CardStack component */
+/* Container holding both overlapping cards */
 .card-stack {
   position: relative;
   width: 520px;
@@ -6,34 +6,140 @@
   cursor: pointer;
 }
 
+/* Base Card Framing */
 .preview-card {
   position: absolute;
   top: 0;
   left: 0;
   width: 480px;
-  background-color: var(--color-bg);              /* Inherited from central hub file (index.css) */
-  border: 2px solid var(--color-charcoal);        /* Inherited from central hub */
-  border-radius: var(--radius-card);              
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border-light, #e2e8f0);
+  border-radius: var(--radius-card, 16px);
   padding: 24px;
-  transition: transform 0.4s ease, z-index 0.4s ease;
+  
+  /* Constant static soft shadow: no mid-flight repaints */
+  box-shadow: 0 12px 30px -6px rgba(15, 23, 42, 0.1), 
+              0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  
+  /* GPU acceleration triggers */
+  will-change: transform, opacity;
+  transform-origin: center center;
+  
+  /* Only animate GPU-composited properties */
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
+/* Default Resting Positions (Before Hover) */
 .card-one {
-  transform: translate(35px, 35px);
-  z-index: 2;
+  transform: translate3d(35px, 35px, 0);
+  z-index: 2; /* Foreground */
+  opacity: 1;
 }
 
 .card-two {
-  transform: translate(0px, 0px);
-  z-index: 1;
+  transform: translate3d(0px, 0px, 0);
+  z-index: 1; /* Background */
+  opacity: 0.92;
 }
 
+/* Hover Swap Animation */
 .card-stack:hover .card-one {
-  transform: translate(0px, 0px);
+  transform: translate3d(0px, 0px, 0);
   z-index: 1;
+  opacity: 0.92;
 }
 
 .card-stack:hover .card-two {
-  transform: translate(35px, 35px);
+  transform: translate3d(35px, 35px, 0);
   z-index: 2;
+  opacity: 1;
+}
+
+/* Card Header Text */
+.card-header {
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text-main, #0f172a);
+  letter-spacing: -0.02em;
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-muted, #475569);
+  margin-top: 4px;
+}
+
+/* Media Containers */
+.media-slot {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.map-preview-slot {
+  background-color: #f8fafc;
+  height: 195px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-text-muted, #64748b);
+}
+
+.map-placeholder-icon {
+  font-size: 2rem;
+}
+
+.map-placeholder-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Heatmap Availability Grid - Soft Internal Gridlines */
+.calendar-grid {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 0.75rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar-grid th,
+.calendar-grid td {
+  border: 1px solid #e2e8f0;
+  padding: 10px 4px;
+  height: 32px;
+  font-weight: 500;
+}
+
+.calendar-grid th {
+  background-color: #f8fafc;
+  font-size: 0.7rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+/* Shading Classes */
+.heat-light { background-color: var(--color-heat-light, #c8ddf2); }
+.heat-med   { background-color: var(--color-heat-med, #7ca8d4); }
+.heat-dark  { 
+  background-color: var(--color-heat-dark, #3a6598); 
+  color: #ffffff; 
+  font-weight: 700; 
+}
+
+/* Highlight Group Accent */
+.highlight-group {
+  outline: 2.5px solid var(--color-highlight-loop, #facc15);
+  outline-offset: -2px;
 }

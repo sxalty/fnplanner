@@ -1,0 +1,266 @@
+/* Base Page Shell */
+.login-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg, #f8fafc);
+  color: var(--color-text-main, #0f172a);
+}
+
+/* Top Header Bar */
+.login-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background-color: transparent;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-text-main, #0f172a);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Home Button */
+.home-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-surface, #ffffff);
+  color: var(--color-text-main, #0f172a);
+  border: 1px solid var(--color-border-light, #e2e8f0);
+  padding: 8px 16px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: var(--radius-btn, 8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.home-nav-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+/* Center Content & Card */
+.login-card-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px 60px 16px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border-light, #e2e8f0);
+  border-radius: var(--radius-card, 16px);
+  padding: 40px 36px;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+}
+
+/* Header Text */
+.login-card-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-text-main, #0f172a);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.login-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-muted, #475569);
+}
+
+.brand-highlight {
+  font-weight: 600;
+  color: var(--color-text-main, #0f172a);
+}
+
+/* Error Notification */
+.login-error-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #dc2626;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.error-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Form Styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-main, #0f172a);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  color: var(--color-text-main, #0f172a);
+  background-color: var(--color-surface, #ffffff);
+  border: 1.5px solid var(--color-border-light, #cbd5e1);
+  border-radius: var(--radius-btn, 8px);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* Password Field with View Toggle */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input {
+  padding-right: 42px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.15s ease;
+}
+
+.password-toggle-btn:hover {
+  color: var(--color-text-main, #0f172a);
+}
+
+/* Forgot Password Row */
+.forgot-password-row {
+  font-size: 0.85rem;
+  color: var(--color-text-muted, #475569);
+  margin-top: -6px;
+}
+
+.reset-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #2a86dd; /* Warm reset accent from reference mockup */
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.reset-link-btn:hover {
+  color: #166a9e;
+}
+
+/* Primary "Log in" CTA Button */
+.submit-login-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-btn-text, #ffffff);
+  background-color: var(--color-btn-bg, #1e293b);
+  border: 1px solid var(--color-btn-bg, #1e293b);
+  border-radius: var(--radius-btn, 8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submit-login-btn:hover:not(:disabled) {
+  background-color: var(--color-btn-hover, #0f172a);
+  box-shadow: 0 0 16px var(--color-btn-glow, rgba(59, 130, 246, 0.5));
+  transform: translateY(-1px);
+}
+
+.submit-login-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Divider: "New to fnPlanner?" */
+.login-divider {
+  display: flex;
+  align-items: center;
+  margin: 24px 0 16px 0;
+  gap: 12px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border-light, #e2e8f0);
+}
+
+.divider-text {
+  font-size: 0.82rem;
+  color: var(--color-text-muted, #64748b);
+  font-weight: 500;
+}
+
+/* Secondary "Sign up" Button */
+.secondary-signup-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-main, #0f172a);
+  background-color: #ffffff;
+  border: 1.5px solid var(--color-border-light, #cbd5e1);
+  border-radius: var(--radius-btn, 8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.secondary-signup-btn:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+}

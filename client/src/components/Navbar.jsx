@@ -1,40 +1,24 @@
-import React, { useState, useRef, useEffect } from "react";
-import "./Navbar.css";
+import React from "react";
+import "./navbar.css";
 
-export default function Navbar({ onCloseMenu }) {
-  const [isLangOpen, setIsLangOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("EN");
-  const dropdownRef = useRef(null);
-
-  // Close dropdown if user clicks anywhere outside of it
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsLangOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleSelectLanguage = (code) => {
-    setCurrentLang(code);
-    setIsLangOpen(false);
-    // Future link: connect to an i18n localization provider here
-  };
-
+/**###################################
+ * Navbar Component
+ * 
+ * @param {Function} onLoginClick - Triggered when the user clicks the Login button[cite: 9]
+ * @param {Function} onCloseMenu - Contextual close/dismiss handler[cite: 1, 7]
+ #####################################*/
+export default function Navbar({ onLoginClick, onCloseMenu }) {
   return (
     <header className="navbar">
-      {/* Brand / Logo */}
+      {/* Brand Anchor */}
       <a href="/" className="nav-brand">
-        {/* Placeholder avatar; replace src with your asset path when ready */}
-        <span className="brand-avatar" role="img" aria-label="logo">
-          🏃
+        <span className="brand-avatar" role="img" aria-label="fnPlanner icon">
+          📆
         </span>
         <span className="brand-name">fnPlanner</span>
       </a>
 
-      {/* Navigation Links and Action Controls */}
+      {/* Navigation Cluster */}
       <nav className="nav-actions">
         <a href="#about" className="nav-item">
           About
@@ -47,54 +31,28 @@ export default function Navbar({ onCloseMenu }) {
         >
           Github
         </a>
-        <a href="#contacts" className="nav-item">
-          Contacts
-        </a>
 
-        {/* Language Selector Dropdown Container */}
-        <div className="language-dropdown-wrapper" ref={dropdownRef}>
-          <button
-            type="button"
-            className={`nav-icon-btn language-selector ${isLangOpen ? "active" : ""}`}
-            onClick={() => setIsLangOpen(!isLangOpen)}
-            aria-expanded={isLangOpen}
-            aria-haspopup="true"
-            aria-label="Change language"
-          >
-            🌐 <span className="lang-label">{currentLang}</span>
-            <span className="arrow-down">▾</span>
-          </button>
-
-          {isLangOpen && (
-            <ul className="language-menu" role="menu">
-              <li role="menuitem">
-                <button type="button" onClick={() => handleSelectLanguage("EN")}>
-                  English
-                </button>
-              </li>
-              <li role="menuitem">
-                <button type="button" onClick={() => handleSelectLanguage("ES")}>
-                  Español
-                </button>
-              </li>
-              <li role="menuitem">
-                <button type="button" onClick={() => handleSelectLanguage("JA")}>
-                  日本語
-                </button>
-              </li>
-            </ul>
-          )}
-        </div>
-
-        {/* Close / Dismiss Action */}
+        {/* Login Button */}
         <button
           type="button"
-          className="nav-icon-btn close-btn"
-          aria-label="Close menu"
-          onClick={onCloseMenu}
+          className="nav-login-btn"
+          onClick={onLoginClick || (() => console.log("Login clicked"))}
         >
-          ✕
+          <span className="login-icon" aria-hidden="true">👤</span>
+          <span>Login</span>
         </button>
+
+        {/* Dismiss / Close Icon */}
+        {onCloseMenu && (
+          <button
+            type="button"
+            className="nav-icon-btn close-btn"
+            aria-label="Close menu"
+            onClick={onCloseMenu}
+          >
+            ✕
+          </button>
+        )}
       </nav>
     </header>
   );

@@ -1,19 +1,10 @@
-/* Color Tokens matching the fnPlanner Native Palette */
-:root {
-  --color-charcoal: #1f2937;
-  --color-white: #ffffff;
-  --color-border: #e5e7eb;
-  --color-accent: #7587b2;
-  --color-hover-bg: #264da7;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 32px;
-  background-color: var(--color-charcoal);
-  border-bottom: 1px solid var(--color-border);
+  padding: 14px 36px;
+  background-color: var(--color-nav-bg, #0d1527);
+  border-bottom: 1px solid var(--color-nav-border, #1e293b);
   position: relative;
   z-index: 100;
 }
@@ -24,11 +15,11 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: var(--color-white);
+  color: var(--color-nav-text, #ffffff);
 }
 
 .brand-avatar {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
 }
@@ -39,26 +30,53 @@
   letter-spacing: -0.02em;
 }
 
-/* Nav Actions Section */
+/* Navigation Actions Group */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .nav-item {
   text-decoration: none;
-  color: var(--color-white);
+  color: var(--color-nav-text, #ffffff);
   font-weight: 500;
   font-size: 0.95rem;
   transition: color 0.15s ease;
 }
 
 .nav-item:hover {
-  color: var(--color-accent);
+  color: var(--color-nav-hover, #94a3b8);
 }
 
-/* Generic Icon Buttons (Language & Close) */
+/* Login Button */
+.nav-login-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #1e293b;
+  color: #ffffff;
+  border: 1px solid #334155;
+  padding: 7px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-login-btn:hover {
+  background-color: #0f172a;
+  border-color: #64748b;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+.login-icon {
+  font-size: 0.85rem;
+}
+
+/* Dismiss / Close Button */
 .nav-icon-btn {
   background: none;
   border: 1px solid transparent;
@@ -67,73 +85,16 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
   font-size: 0.95rem;
-  color: var(--color-charcoal);
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  color: var(--color-nav-text, #ffffff);
+  transition: background-color 0.2s ease;
 }
 
 .nav-icon-btn:hover {
-  background-color: var(--color-hover-bg);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .close-btn {
   font-size: 1.1rem;
   padding: 6px 8px;
-}
-
-/* Language Selector & Dropdown Menu */
-.language-dropdown-wrapper {
-  position: relative;
-}
-
-.language-selector.active {
-  background-color: var(--color-hover-bg);
-  border-color: var(--color-border);
-}
-
-.lang-label {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: white;
-}
-
-.arrow-down {
-  font-size: 0.75rem;
-  color: white;
-}
-
-.language-menu {  /*drop down menu*/
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  background-color: var(--color-charcoal);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  padding: 6px;
-  margin: 0;
-  min-width: 130px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.language-menu button {
-  width: 100%;
-  text-align: left;
-  padding: 8px 12px;
-  background: none;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  color: var(--color-white);
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-.language-menu button:hover {
-  background-color: var(--color-hover-bg);
-  color: var(--color-accent);
 }
